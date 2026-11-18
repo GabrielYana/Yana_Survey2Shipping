@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Connect Shipping</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <p>Shipping</p>
+
+        <div id="top_section">
+            <div id="box13"><span style="color:white; font-size:20px;">Shipping</span></div>
+            <div id="box14"><span style="color:white; font-size:20px;">Delivery</span></div>
+            <div id="box3"><span style="color:white; font-size:20px;">Tracking</span></div>
+        </div>
+
+        <button type="button" onclick="logout()">Logout</button>
+
+        <script>
+        async function logout() {
+            await fetch('/logout', {method: 'POST'});
+            document.location.href = 'indexlogin.html';
+        }
+        </script>
+    </body>
+</html>

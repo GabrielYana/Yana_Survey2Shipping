@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <p>Register</p>
+
+        Fullname
+        <input id="Fullname" type="text">
+        Username
+        <input id="Username" type="text">
+        Password
+        <input id="Password" type="password">
+
+        <button type="button" onclick="clickButton()">Register</button>
+        <a href="indexlogin.html">Go to Login</a>
+
+        <script>
+        const clickButton = async () => {
+            const postData = {
+                Username: document.getElementById('Username').value,
+                Password: document.getElementById('Password').value,
+                Fullname: document.getElementById('Fullname').value
+            };
+
+            try {
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(postData)
+                });
+                const result = await response.json();
+
+                if (response.ok && result.status == 'success') {
+                    alert('Registration successful');
+                    document.location.href = 'indexlogin.html';
+                } else {
+                    alert(result.detail || 'Registration failed');
+                }
+            } catch (error) {
+                alert('Unable to connect. Run python app.py and open http://127.0.0.1:8000/');
+                console.error(error);
+            }
+        };
+        </script>
+    </body>
+</html>
